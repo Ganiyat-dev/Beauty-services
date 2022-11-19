@@ -10,12 +10,12 @@
 } 
 
 :root {
-    --primary-hue: 210;
+    --primary-color: #B48E40;
     --gray-hue: 240;
-    --color-primary: hsl(var(--primary-hue),
+    --color-primary: hsl(var(--primary-color),
     100%, 50%);
-    --color-primary-variant: hsl(var(--primary-hue), 100%, 65%);
-    --color-secondary: #ffb116;
+    --color-primary-variant: hsl(var(--primary-color), 100%, 65%);
+    --color-secondary: #FFFFFF;
     --color-gray-100: hsl(var(--gray-hue), 47%, 94%);
     --color-gray-200: hsl(var(--gray-hue), 26%, 75%);
     --color-gray-300: hsl(var(--gray-hue), 24%, 64%);
@@ -65,4 +65,31 @@ img {
     width: 100%;
 }
 
+
+.btn {
+    color: var(--color-gray-600);
+    width: fit-content;
+    margin: 0 auto;
+    padding: 0.9rem 2rem;
+    background: var(--color-secondary);
+    border-radius: 1.5rem;
+    transition: var(--transition);
+}
+.btn:hover {
+    opacity: 0.7;
+}
+
+.btn.lg {
+    padding: 1.2rem;
+    border-radius: 2rem;
+    font-size: 1.1rem;
+}
+.btn.sm {
+    padding: 0.4rem 1.2rem;
+    font-size: 0.9rem;
+}
+.btn.sm:hover {
+    background: var(--color-gray-100);
+
+}
 
