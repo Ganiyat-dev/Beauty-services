@@ -1,10 +1,12 @@
-import Header from '../../components/Header'
+import MainHeader from '../../components/MainHeader'
+import Programs from '../../components/Programs'
 import './home.css'
 
 function Home() {
   return (
     <>
-    <Header/>
+    <MainHeader/>
+    <Programs/>
     </>
   )
 }
