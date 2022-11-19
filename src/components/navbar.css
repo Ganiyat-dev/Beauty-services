@@ -24,8 +24,8 @@ nav {
 }
 .logo {
     width: 7rem;
-
 }
+/* adjust logo position to the left */
 
 .nav__links {
     display: flex;

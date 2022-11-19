@@ -40,29 +40,43 @@ export const programs = [
     {
         id: 1,
         icon: <SiOpenaigym/>,
-        title: "Program One",
-        info: "This is the day that the lord has made. We will rejoice!",
+        title: "Service One",
+        info: "Makeup Application!",
         path: "/programs/111"
     },
     {
         id: 2,
         icon: <SiOpenaigym/>,
-        title: "Program Two",
-        info: "This is the day that the lord has made. We will rejoice!",
+        title: "Service Two",
+        info: "Eyebrow!",
         path: "/programs/222"
     },
     {
         id: 3,
         icon: <SiOpenaigym/>,
-        title: "Program Three",
-        info: "This is the day that the lord has made. We will rejoice!",
+        title: "Service Three",
+        info: "Macara Application!",
         path: "/programs/333"
     },
     {
         id: 4,
         icon: <SiOpenaigym/>,
-        title: "Program Four",
-        info: "This is the day that the lord has made. We will rejoice!",
+        title: "Service Four",
+        info: "Eye lashes!",
+        path: "/programs/444"
+    },
+    {
+        id: 5,
+        icon: <SiOpenaigym/>,
+        title: "Service Five",
+        info: "Lip stick!",
+        path: "/programs/444"
+    },
+    {
+        id: 6,
+        icon: <SiOpenaigym/>,
+        title: "Service Six",
+        info: "djksld",
         path: "/programs/444"
     }
 ]

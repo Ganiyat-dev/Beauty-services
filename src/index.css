@@ -11,13 +11,13 @@
 
 :root {
     --primary-color: #B48E40;
-    --gray-hue: 240;
+    --gray-hue: 42;
     --color-primary: hsl(var(--primary-color),
     100%, 50%);
     --color-primary-variant: hsl(var(--primary-color), 100%, 65%);
     --color-secondary: #FFFFFF;
     --color-gray-100: hsl(var(--gray-hue), 47%, 94%);
-    --color-gray-200: hsl(var(--gray-hue), 26%, 75%);
+    --color-gray-200: hsl(var(--gray-hue), 100%, 2%);
     --color-gray-300: hsl(var(--gray-hue), 24%, 64%);
     --color-gray-400: hsl(var(--gray-hue), 16%, 41%);
     --color-gray-500: hsl(var(--gray-hue), 44%, 25%);
@@ -31,10 +31,14 @@
 
 body {
     font-family: 'Montserrat', sans-serif;
+    overflow-x: hidden;
+    overflow-y: auto;
+    /* background: var(--color-gray-600); */
     color: var(--color-gray-200);
-    line-height: 1.7;
-    overflow: hidden;
-    background: var(--color-gray-600);
+
+    /* line-height: 1.7; */
+    /* line-height: 1.7;
+    overflow: hidden;*/
 }
 
 .container {
@@ -42,7 +46,7 @@ body {
     max-width: 1920px;
     margin-inline: auto;
 }
-h1, h2, h3, h4, h5 {
+h1, h3, h4, h5 {
     line-height: 1.2;
     color: var(--color-gray-100);
 }
@@ -50,8 +54,12 @@ h1, h2, h3, h4, h5 {
 h1 {
     font-size: 3rem;
 }
+h4 {
+    color: #B48E40;
+}
 
 h2 {
+    color: #B48E40;
     font-size: 2rem;
 }
 
@@ -71,12 +79,13 @@ img {
     width: fit-content;
     margin: 0 auto;
     padding: 0.9rem 2rem;
-    background: var(--color-secondary);
+    background: var(--primary-color);
     border-radius: 1.5rem;
     transition: var(--transition);
 }
 .btn:hover {
-    opacity: 0.7;
+    background: var(--color-gray-100);
+    color:#B48E40;
 }
 
 .btn.lg {
@@ -92,4 +101,60 @@ img {
     background: var(--color-gray-100);
 
 }
+/* .btn.lg:hover {
+    background: var(--color-gray-100);
+    color:#B48E40;
+} */
+section {
+    margin-top: 10rem;
+}
 
+.section__head {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+.section__head span {
+    background: black;
+    padding: 0.8rem;
+    border-radius: 1rem;
+    color: white;
+    font-size: 1.5rem;
+}
+
+.card {
+    background-color: #e0d5bf;
+    border: 5px solid#B48E40;
+    text-align: center;
+    padding: 3rem 3rem;
+    border-radius: 0 3rem 0 3rem;
+}
+
+.card:hover {
+    background: transparent;
+    border-color: #a77614;
+    cursor: default;
+}
+.card span {
+    width: 3rem;
+    height: 3rem;
+    /* background: green; */
+    /* color: black; */
+    font-size: 1.5rem;
+    padding: 0.8rem;
+    display: grid;
+    place-items: center;
+    margin-bottom: 1.5rem;
+    margin-inline: auto;
+    border-radius: 1rem;
+    transition: white
+}
+.card:hover span {
+    background: #B48E40;
+    color: #835907;
+}
+.card small {
+    margin-top: 1rem;
+    display: block;
+    font-weight: 300;
+}

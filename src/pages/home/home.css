@@ -13,7 +13,7 @@
 .main__header-container {
     height: 100%;
     display: grid;
-    /* grid-template-columns: 1fr 1fr ; */
+    grid-template-columns: 1fr 1fr ;
     align-items: center;
     justify-content: space-between;
     /* gap: 6rem; */
@@ -32,18 +32,21 @@
 .main__header-left h1 {
     margin: 1rem 0 3.5rem;
 }
-/* .main__header-grid{
-    display: grid;
-    place-items: cover;
-    position: relative;
-} */
 
-/* .main__header-circle {
-    width: 25rem;
-    height: 25rem;
-    background: linear-gradient(75deg, var(--color-secondary), transparent);
-    border-radius: 50%;
-    position: absolute;
-    transition: var(--transition);
-} */
+.programs {
+    margin-top: 4rem;
+}
+
+.programs__wrapper {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
+    margin-top: 4rem;
+}
+.programs__program a {
+    margin-top: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
