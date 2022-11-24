@@ -1,9 +1,10 @@
-import './plan.css'
+// import Header from '../../components/Header'
+// import './plan.css'
 
-function Plans() {
-  return (
-    <div>Plans</div>
-  )
-}
+// function Plans() {
+//   return (
+//     <div>Plans</div>
+//   )
+// }
 
-export default Plans
+// export default Plans

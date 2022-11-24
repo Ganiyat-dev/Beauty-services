@@ -1,19 +1,25 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import './booking.css'
+import './register.css'
 // import Form from 'react-bootstrap/Form';
 
-const Booking = () => {
+const Register = () => {
     const [form, setForm] = useState(true);
     
 
   return (
     <>
         <div className="wrapper">
+        <h2>Create an Account</h2>
             <div className="title-text">
                 <div className="title signup-client">
-                Booking Details
+                Register as
                 </div>
+
+                <div className="title signup">
+                Register as
+                </div>
+
             </div>
     
             <div className="slide-controls">
@@ -84,6 +90,37 @@ const Booking = () => {
                   </div>
                </form>
             </div>
+
+           
+                <form className={form && 'd-none'}>
+                  <div className='name-field' >
+                     <div className="field">
+                        <input type="text" placeholder="First Name" required />
+                     </div>
+                     <div className="field">
+                        <input type="text" placeholder="Last Name" required />
+                     </div>
+                  </div>
+                  <div className="field">
+                     <input type="text" placeholder="Gender" required />
+                  </div>
+                  <div className="field">
+                     <input type="text" placeholder="Email Address" required />
+                  </div>
+                  <div className="field">
+                     <input type="password" placeholder="Password" required />
+                  </div>
+                  <div className="field">
+                     <input type="password" placeholder="Confirm password" required />
+                  </div>
+                  <div className="field btn">
+                     <div className="btn-layer"></div>
+                     <input type="submit" value="Signup" />
+                  </div>
+                  <div className="signup-link">
+                     Already a member? <Link to="/sign-in">Proceed to Login</Link>
+                  </div>
+               </form>
                 
             </div>
          </div>
@@ -93,4 +130,4 @@ const Booking = () => {
  )
 }
 
-export default Booking
+export default Register
