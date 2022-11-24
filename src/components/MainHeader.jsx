@@ -8,7 +8,7 @@ const MainHeader = () => {
             <div className='main__header-left'>
                 <h4>Welcome to GlamUp</h4>
                 <h1> Made for professionals by professionals </h1>
-                <Link to="/plans" className='btn lg'>Reserve your Spot</Link>
+                <Link to="/sign-in" className='btn lg'>Reserve your Spot</Link>
             </div>
 
 

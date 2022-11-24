@@ -1,16 +1,16 @@
-@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Arima+Madurai:400,500,600,700&display=swap');
 *{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Arima Madurai', 'cursive';
 }
 html,body{
   display: grid;
   height: 100%;
   width: 100%;
   place-items: center;
-  background: -webkit-linear-gradient(left, #b49d6d, #B48E40);
+  /* background: -webkit-linear-gradient(left, #b49d6d, #B48E40); */
 }
 ::selection{
   background:  #B48E40;
@@ -18,9 +18,10 @@ html,body{
 }
 .wrapper{
   overflow: hidden;
-  max-width: 390px;
+  /* max-width: 390px; */
   background: #fff;
   padding: 30px;
+  margin-top: 100px;
   border-radius: 5px;
   box-shadow: 0px 15px 20px rgba(0,0,0,0.1);
 }
@@ -46,13 +47,14 @@ input[type="radio"]{
   overflow: hidden;
 }
 .form-container .form-inner{
-  display: flex;
+  /* display: flex; */
   width: 200%;
 }
 .form-container .form-inner form{
   width: 50%;
   transition: all 0.6s cubic-bezier(0.68,-0.55,0.265,1.55);
 }
+
 .form-inner form .field{
   height: 50px;
   width: 100%;
