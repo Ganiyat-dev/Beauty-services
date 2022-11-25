@@ -15,16 +15,6 @@ const Booking = () => {
                 Booking Details
                 </div>
             </div>
-    
-            <div className="slide-controls">
-               <input type="radio" name="slide" id="signup-client" checked />
-               <input type="radio" name="slide" id="signup-mua" />
-
-               <label for="login" className="slide signup-client" onClick={()=>setForm(true) }>Client</label>
-               <label for="signup" className="slide signup-mua" onClick={()=>setForm(false) }>Makeup Artist</label>
-               <div className="slider-tab"></div>
-            </div> 
-            
 
 
         <div className="form-container">
@@ -63,25 +53,22 @@ const Booking = () => {
                   </div>
 
                   <div className="field">
-                     <input type="email" placeholder="Email Address" required />
+                     <input type="text" placeholder="Phone Number" required />
                   </div>
 
-                  <div className="field">
-                     <input type="password" placeholder="Password" required />
-                  </div>
-
-                  <div className="field">
-                     <input type="password" placeholder="Confirm password" required />
+                  <div className="field-date">
+                  <label for="appt">Choose Date and Time for your Appointment</label>
+                     <input type="datetime-local" placeholder="Choose Date" required />
                   </div>
 
                   <div className="field btn">
                      <div className="btn-layer"></div>
-                     <input type="submit" value="Signup" />
+                     <input type="submit" value="Confirm" />
                   </div>
 
-                  <div className="signup-link">
-                     Already a member? <Link to="/sign-in">Proceed to Login</Link>
-                  </div>
+                  {/* <div className="signup-link">
+                     <Link to="/sign-in">Confirm</Link>
+                  </div> */}
                </form>
             </div>
                 

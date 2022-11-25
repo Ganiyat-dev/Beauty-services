@@ -98,25 +98,26 @@ img {
     margin: 0 auto;
     padding: 0.9rem 2rem;
     background: var(--primary-color);
-    border-radius: 1.5rem;
+    /* border-radius: 1.5rem; */
     transition: var(--transition);
 }
 .btn:hover {
-    background: var(--color-gray-100);
-    color:#B48E40;
+    background: black;
+    color:rgb(187, 173, 173);
 }
 
 .btn.lg {
-    padding: 1.2rem;
-    border-radius: 2rem;
-    font-size: 1.1rem;
+    /* padding: 1.2rem; */
+    /* border-radius: 2rem; */
+    font-size: 1.5rem;
+    color: white;
 }
 .btn.sm {
     padding: 0.4rem 1.2rem;
     font-size: 0.9rem;
 }
 .btn.sm:hover {
-    background: var(--color-gray-100);
+    background: white
 
 }
 /* .btn.lg:hover {

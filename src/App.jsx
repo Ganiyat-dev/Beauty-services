@@ -9,7 +9,7 @@ import Login from './components/Login'
 import Gallery from './pages/gallery/Gallery'
 import Home from './pages/home/Home'
 import NotFound from './pages/notFound/NotFound'
-import Plans from './pages/plans/Plans'
+// import Plans from './pages/plans/Plans'
 import Services from './pages/services/Services'
 
 const App = () => {
@@ -22,7 +22,7 @@ const App = () => {
         <Route path='booking' element={<Booking/>}/>
         <Route path='contact' element={<Contact/>}/>
         <Route path='gallery' element={<Gallery/>}/>
-        <Route path='plans' element={<Plans/>}/>
+        {/* <Route path='plans' element={<Plans/>}/> */}
         <Route path='services' element={<Services/>}/>
         <Route path='register' element={<Register/>}/>
         <Route path='sign-in' element={<Login/>}/>

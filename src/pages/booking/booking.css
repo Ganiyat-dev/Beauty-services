@@ -187,3 +187,20 @@ form .btn input[type="submit"]{
 .client-form {
   display: grid;
 }
+.field-date label {
+  display: block;
+  /* font: 1rem 'Fira Sans', sans-serif; */
+}
+
+.field-date input {
+  margin-top: 20px;
+  /* height: 100%; */
+  width: 100%;
+  outline: none;
+  padding-left: 15px;
+  border-radius: 5px;
+  border: 1px solid lightgrey;
+  border-bottom-width: 2px;
+  font-size: 17px;
+  transition: all 0.3s ease;
+}
