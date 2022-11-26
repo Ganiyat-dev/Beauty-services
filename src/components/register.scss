@@ -1,42 +1,26 @@
-@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
-*{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
-}
-html,body{
-  display: grid;
-  height: 100%;
-  width: 100%;
-  place-items: center;
-  /* background: -webkit-linear-gradient(left,  #b49d6d, #B48E40); */
-}
-::selection{
-  background: #B48E40;
-  color: #fff;
-}
-.wrapper{
+@import "../utils/scss/index.scss";
+
+.wrapper {
   overflow: hidden;
   /* max-width: 390px; */
   width: 700px;
   background: #fff;
   padding: 30px;
   border-radius: 5px;
-  box-shadow: 0px 15px 20px rgba(0,0,0,0.1);
+  box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.1);
 }
-.wrapper .title-text{
+.wrapper .title-text {
   display: flex;
   width: 200%;
 }
-.wrapper .title{
+.wrapper .title {
   width: 50%;
   font-size: 35px;
   font-weight: 600;
   text-align: center;
-  transition: all 0.6s cubic-bezier(0.68,-0.55,0.265,1.55);
+  transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
-.wrapper .slide-controls{
+.wrapper .slide-controls {
   position: relative;
   display: flex;
   height: 50px;
@@ -47,7 +31,7 @@ html,body{
   border: 1px solid lightgrey;
   border-radius: 5px;
 }
-.slide-controls .slide{
+.slide-controls .slide {
   height: 100%;
   width: 100%;
   color: #fff;
@@ -59,59 +43,60 @@ html,body{
   z-index: 1;
   transition: all 0.6s ease;
 }
-.slide-controls label.signup-mua{
+.slide-controls label.signup-mua {
   color: #000;
 }
-.slide-controls .slider-tab{
+.slide-controls .slider-tab {
   position: absolute;
   height: 100%;
   width: 50%;
   left: 0;
   z-index: 0;
   border-radius: 5px;
-  background: -webkit-linear-gradient(left, #b49d6d, #B48E40);
-  transition: all 0.6s cubic-bezier(0.68,-0.55,0.265,1.55);
+  background: -webkit-linear-gradient(left, #b49d6d, #b48e40);
+  transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
-input[type="radio"]{
+input[type="radio"] {
   display: none;
 }
-#signup-mua:checked ~ .slider-tab{
+#signup-mua:checked ~ .slider-tab {
   left: 50%;
 }
 
-#signup-client:checked ~ label.signup-client{
+#signup-client:checked ~ label.signup-client {
   color: #fff;
   cursor: default;
   user-select: none;
 }
-#signup-mua:checked ~ label.signup-mua{
+#signup-mua:checked ~ label.signup-mua {
   color: #000;
 }
-#signup-client:checked ~ label.signup-client{
+#signup-client:checked ~ label.signup-client {
   cursor: default;
   user-select: none;
 }
-.wrapper .form-container{
+.wrapper .form-container {
   width: 200%;
   overflow: hidden;
 }
-.form-container .form-inner{
+.form-container .form-inner {
   width: 100%;
 }
-.form-container .form-inner form{
+.form-container .form-inner form {
   width: 50%;
-  transition: all 0.6s cubic-bezier(0.68,-0.55,0.265,1.55);
+  transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 .form-inner form .name-field {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
 }
-.form-inner form .field{
+.form-inner form .field {
   height: 50px;
   width: 100%;
   margin-top: 20px;
 }
-.form-inner form .field input, .form-inner form .field select{
+.form-inner form .field input,
+.form-inner form .field select {
   height: 100%;
   width: 100%;
   outline: none;
@@ -122,52 +107,58 @@ input[type="radio"]{
   font-size: 17px;
   transition: all 0.3s ease;
 }
-.form-inner form .field input:focus{
-  border-color: #B48E40;
+.form-inner form .field input:focus {
+  border-color: #b48e40;
 }
-.form-inner form .field input::placeholder{
+.form-inner form .field input::placeholder {
   color: #999;
   transition: all 0.3s ease;
 }
-form .field input:focus::placeholder{
+form .field input:focus::placeholder {
   color: #b3b3b3;
 }
-.form-inner form .pass-link{
+.form-inner form .pass-link {
   margin-top: 5px;
 }
-.form-inner form .signup-link{
+.form-inner form .signup-link {
   text-align: center;
   margin-top: 30px;
 }
 .form-inner form .pass-link a,
-.form-inner form .signup-link a{
-  color: #B48E40;
+.form-inner form .signup-link a {
+  color: #b48e40;
   text-decoration: none;
 }
 .form-inner form .pass-link a:hover,
-.form-inner form .signup-link a:hover{
+.form-inner form .signup-link a:hover {
   text-decoration: underline;
 }
-form .btn{
+form .btn {
   height: 50px;
   width: 100%;
   border-radius: 5px;
   position: relative;
   overflow: hidden;
 }
-form .btn .btn-layer{
+form .btn .btn-layer {
   height: 100%;
   width: 300%;
   position: absolute;
   left: -100%;
-  background: -webkit-linear-gradient(right, #b49d6d, #B48E40, #b49d6d, #B48E40);
+  background: -webkit-linear-gradient(
+    right,
+    #b49d6d,
+    #b48e40,
+    #b49d6d,
+    #b48e40
+  );
   border-radius: 5px;
-  transition: all 0.4s ease;;
+  transition: all 0.4s ease;
 }
-form .btn:hover .btn-layer{
+form .btn:hover .btn-layer {
   left: 0;
 }
-form .btn input[type="submit"]{
+form .btn input[type="submit"] {
   height: 100%;
   width: 100%;
   z-index: 1;
@@ -181,7 +172,7 @@ form .btn input[type="submit"]{
   font-weight: 500;
   cursor: pointer;
 }
-.d-none{
+.d-none {
   display: none;
 }
 .client-form {
@@ -190,7 +181,7 @@ form .btn input[type="submit"]{
 .field-lisc input {
   display: none;
 }
-.field-lisc label{
+.field-lisc label {
   height: 50px;
   width: 100%;
   outline: none;
@@ -203,4 +194,49 @@ form .btn input[type="submit"]{
   margin-top: 20px;
   display: flex;
   align-items: center;
+}
+
+#Register_Main_Container {
+  .wrapper {
+    max-width: 98%;
+    width: 900px;
+    margin: 60px auto;
+
+    .title {
+      font-size: 2.6rem;
+    }
+
+    .slide-controls {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      border: 0;
+
+      .slide {
+        border: 1px solid rgb(200, 200, 200);
+        border-radius: 0.4rem;
+        color: #333;
+        &.active {
+          background: $primary-color;
+          color: #fff;
+        }
+      }
+    }
+
+    .form-container {
+      .form-inner {
+        form {
+          .name-field {
+            display: flex;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 992px) {
+  #Register_Main_Container {
+  }
 }

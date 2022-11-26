@@ -177,3 +177,8 @@ section {
     display: block;
     font-weight: 300;
 }
+
+.invalid-form-data{
+    color: red;
+    padding: 10px 0;
+}
