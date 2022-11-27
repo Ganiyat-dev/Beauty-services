@@ -1,44 +1,66 @@
-import { Link } from 'react-router-dom'
-import './login.css'
+
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import "./login.scss";
+
 
 const Login = () => {
+   const [isClient] = useState(true);
+   const [msg] = useState("");
+
   return (
-    <>
-        <div class="wrapper">
-         <div class="title-text">
-            <div class="title login">
-              Welcome Back
-            </div>
-         </div>
-         <div class="form-container">
-            <div class="form-inner">
-               <form action="#" class="login">
+    <div id="Login_Main_Container">
+      <div className="wrapper">
+        <h2>Welcome Back</h2>
 
-                  <div class="field">
-                     <input type="text" placeholder="Email Address" required/>
-                  </div>
-                  <div class="field">
-                     <input type="password" placeholder="Password" required/>
+
+        <div className="form-container">
+          {msg ? (
+            <>
+              <p className="message error">Invalid Email or Password</p>
+            </>
+          ) : null}
+          <div className="form-inner">
+            {isClient ? (
+              <>
+                <form>
+                  <div className="field">
+                    <input
+                      type="email"
+                      placeholder="Email Address"
+                      name="email"
+                     
+                    />
                   </div>
 
+                  <div className="field">
+                    <input
+                      type="password"
+                      placeholder="Password"
+                      name="password"
+                    />
+
+                  </div>
                   <div class="pass-link">
-                     <Link to="#">Forgot password?</Link>
+                      <Link to="#">Forgot password?</Link>
                   </div>
 
-                  <div class="field btn">
-                     <div class="btn-layer"></div>
-                     <input type="submit" value="Login"/>
+                  <div className="form-btn">
+                    <input type="submit" value="Log in" />
                   </div>
 
-                  <div class="signup-link">
-                     Not a member? <Link to="/register">Signup now</Link>
-                  </div> 
-               </form>            
-            </div>
-         </div>
+                  <div className="signin-link">
+                    Not a member?{" "}
+                    <Link to="/register">Proceed to Register</Link>
+                  </div>
+                </form>
+              </>
+            ) : null}
+          </div>
+        </div>
       </div>
-    </>
-  )
-}
+    </div>
+  );
+};
 
-export default Login
+export default Login;

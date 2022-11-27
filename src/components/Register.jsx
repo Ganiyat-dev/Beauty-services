@@ -1,4 +1,4 @@
-import axios from "axios";
+
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./register.scss";
@@ -9,9 +9,11 @@ import {
   trainerBody,
   trainerValidate,
 } from "../utils/schema/registerSchema";
+import service from "../services/service";
 
 const Register = () => {
   const [isClient, setIsClient] = useState(true);
+  const [msg, setMsg] = useState("");
 
   const clientForm = useFormik({
     initialValues: clientBody,
@@ -20,7 +22,13 @@ const Register = () => {
   });
 
   function onClientSubmit(values) {
-    console.log(JSON.stringify(values, null, 2));
+    setMsg("");
+    service.doRegisterClient(values).then(
+      (res) => {
+        clientForm.resetForm();
+      },
+      (err) => service.handleRegisterError(err, setMsg)
+    );
   }
 
   const trainerForm = useFormik({
@@ -30,7 +38,13 @@ const Register = () => {
   });
 
   function onTrainerFormSubmit(values) {
-    console.log(JSON.stringify(values, null, 2));
+    // setMsg("");
+    service.doRegisterTrainer(values).then(
+      (res) => {
+        trainerForm.resetForm();
+      },
+      (err) => service.handleRegisterError(err, setMsg)
+    );
   }
 
   return (
@@ -61,6 +75,11 @@ const Register = () => {
         </div>
 
         <div className="form-container">
+          {msg ? (
+            <>
+              <p className="message error">Email is already in use</p>
+            </>
+          ) : null}
           <div className="form-inner">
             {isClient ? (
               <>
@@ -294,7 +313,7 @@ const Register = () => {
                   </div>
 
                   <div className="name-field">
-                    <div className="field">
+                    {/* <div className="field">
                       <input
                         type="file"
                         placeholder="Enter Licence"
@@ -307,6 +326,22 @@ const Register = () => {
                         {trainerForm.errors.license &&
                         trainerForm.touched.license
                           ? trainerForm.errors.license
+                          : null}
+                      </div>
+                    </div> */}
+                      <div className="field">
+                      <input
+                        className="form-select form-select-lg"
+                        placeholder="Enter Specialized Area"
+                        name="specialization"
+                        value={trainerForm.values.specialization}
+                        onChange={trainerForm.handleChange}
+                      />
+    
+
+                      <div className="invalid-form-data">
+                        {trainerForm.errors.specialization && trainerForm.touched.specialization
+                          ? trainerForm.errors.specialization
                           : null}
                       </div>
                     </div>

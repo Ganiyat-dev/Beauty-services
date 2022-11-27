@@ -9,7 +9,7 @@ function Home() {
     <>
     <MainHeader/>
     <Programs/>
-    <Plan/>
+    <Plan />
     <Footer/>
     </>
   )

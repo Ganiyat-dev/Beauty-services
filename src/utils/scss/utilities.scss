@@ -1,0 +1,18 @@
+.message {
+    padding: 12px 24px;
+    color: #fff;
+    font-weight: 600;
+    margin: 8px 0;
+
+  &.error {
+    background: red;
+  }
+
+  &.success {
+    background: green;
+  }
+
+  &.warning {
+    background: yellow;
+  }
+}

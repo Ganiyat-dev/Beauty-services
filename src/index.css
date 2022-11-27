@@ -182,3 +182,10 @@ section {
     color: red;
     padding: 10px 0;
 }
+.signup-link a {
+    color: #B48E40;
+}
+
+.signin-link a {
+    color: #B48E40;
+}

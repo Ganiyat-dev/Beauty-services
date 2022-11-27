@@ -29,7 +29,7 @@ const clientValidate = Yup.object().shape({
     .oneOf([Yup.ref("password"), null], "Password do not match"),
   phoneNumber: Yup.string()
     .matches(
-      /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{3,8}$/,
+      /^[+]?[(]?[0-9]{3}[)]?[-\s.]?[0-9]{3}[-\s.]?[0-9]{3,8}$/,
       "Enter a valid phone number"
     )
     .required("Phone number is required"),
@@ -46,7 +46,7 @@ const trainerBody = {
   phoneNumber: "",
   password: "",
   password2: "",
-  license: "",
+  specialization: "",
   yearsOfExperience: "",
 };
 
@@ -65,10 +65,10 @@ const trainerValidate = Yup.object().shape({
     .required("Confirm password is required")
     .oneOf([Yup.ref("password"), null], "Password do not match"),
   phoneNumber: Yup.string()
-    .matches(/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{3,8}$/,
+    .matches(/^[+]?[(]?[0-9]{3}[)]?[-\s.]?[0-9]{3}[-\s.]?[0-9]{3,8}$/,
     "Enter a valid phone number")
     .required("Phone number is required"),
-  license: Yup.mixed().required("Licence is required"),
+  specialization: Yup.mixed().required("Enter a specialized area"),
   yearsOfExperience: Yup.number()
     .min(1, "Year of experience must be between 1 - 10")
     .max(10, "Enter valid years of experience"),

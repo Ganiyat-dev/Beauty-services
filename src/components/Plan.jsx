@@ -1,5 +1,4 @@
-import { FaCrown } from "react-icons/fa";
-import { plans } from "../data";
+
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Card from "../UI/Card";
@@ -14,7 +13,6 @@ const Plan = () => {
     async function getPlans() {
       try {
         const result = await axios.get(`http://localhost:9090/api/v1/plans`);
-        console.log("The result is ", result);
         setPlans(result.data);
       } catch (error) {
         console.log(error);
@@ -47,8 +45,7 @@ const Plan = () => {
                   <small>{planSession}</small>
                   <small>{servicePlans}</small>
                   <Link to="/booking" className="btn sm">
-                    Learn Mo
-                    <TbBusinessplan />
+                    Book Now
                   </Link>
                 </Card>
               );
