@@ -168,17 +168,17 @@ section {
     border-radius: 1rem;
     transition: white
 }
-.card:hover span {
+/* .card:hover span {
     background: #B48E40;
     color: #835907;
-}
+} */
 .card small {
     margin-top: 1rem;
     display: block;
     font-weight: 300;
 }
 
-.invalid-form-data{
+.invalid-form-data, .invalid-data{
     color: red;
     padding: 10px 0;
 }

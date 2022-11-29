@@ -60,6 +60,8 @@ nav {
     transform: rotate(45deg);
     margin-top: 0.9rem;
 }
+
+
 @media screen and (max-width: 1024px) {
     .nav__toggle-btn {
         display: inline-block;

@@ -13,9 +13,7 @@ import { AiFillInstagram } from 'react-icons/ai'
                 <Link to="/" className='logo'>
                     <img src={Logo} alt='footer Logo'/>
                 </Link>
-                <p>
-                    hwsiudyghwqkdiyuhkwoelkd
-                </p>
+
                 <div className='footer__socials'>
                     <a href='https://linkedin.com/' target="_blank" rel='noreferrer noopner'>
                         <FaLinkedin/>
@@ -31,7 +29,7 @@ import { AiFillInstagram } from 'react-icons/ai'
                     </a>
                 </div>
             </article>
-            <article>
+            {/* <article>
                 <h4> Permalinks</h4>
                 <Link to='/about'>About</Link>
                 <Link to='/services'>About</Link>
@@ -51,7 +49,7 @@ import { AiFillInstagram } from 'react-icons/ai'
                 <Link to='/services'>About</Link>
                 <Link to='/plans'>About</Link>
                 <Link to='/contact'>About</Link>
-            </article>
+            </article> */}
          </div>
     </footer>
    )

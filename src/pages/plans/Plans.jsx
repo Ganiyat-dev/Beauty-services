@@ -4,16 +4,19 @@ import axios from "axios";
 import Card from "../../UI/Card";
 import { Link } from "react-router-dom";
 import PlanHead from "../../components/PlanHead";
+import './plan.scss'
 
 const Plan = () => {
   const [plans, setPlans] = useState([]);
+
+  // const [servicePlans, setServicePlans] = useState([]);
 
   useEffect(() => {
     async function getPlans() {
       try {
         const result = await axios.get(`http://localhost:9090/api/v1/plans`);
-        console.log("The result is ", result);
         setPlans(result.data);
+        // setServicePlans(result.data.servicePlans);
       } catch (error) {
         console.log(error);
       }
@@ -26,7 +29,7 @@ const Plan = () => {
       <div className="container programs__container">
         <PlanHead icon={<TbBusinessplan />} title="Plans" />
         <div className="programs__wrapper">
-          {plans.map(
+          {plans?.map(
             ({
               id,
               planName,
@@ -34,6 +37,7 @@ const Plan = () => {
               planPrice,
               planSession,
               servicePlans,
+
               path,
             }) => {
               return (
@@ -42,11 +46,16 @@ const Plan = () => {
                   <h4>{planName}</h4>
                   <small>{planDescription}</small>
                   <small>&#8358; {planPrice}</small>
-                  <small>No of Session: {planSession}</small>
-                  <small> {servicePlans} </small>
+                  <small> No of Session: {planSession}</small>
+                  <small>
+                    {servicePlans.map((item, index) => (
+                        <p key={index}>
+                          <span key={index}> {item.serviceName}</span>
+                        </p>
+                    ))}
+                  </small>
                   <Link to="/booking" className="btn sm">
                     Book Now
-                    <TbBusinessplan />
                   </Link>
                 </Card>
               );

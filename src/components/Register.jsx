@@ -10,10 +10,16 @@ import {
   trainerValidate,
 } from "../utils/schema/registerSchema";
 import service from "../services/service";
+import TransitionAlerts from "../pages/booking/Modal";
 
 const Register = () => {
   const [isClient, setIsClient] = useState(true);
   const [msg, setMsg] = useState("");
+  const [open, setOpen] = useState(false);
+
+  const handleClick =()=>{
+    setOpen(false)
+  }
 
   const clientForm = useFormik({
     initialValues: clientBody,
@@ -23,6 +29,7 @@ const Register = () => {
 
   function onClientSubmit(values) {
     setMsg("");
+    setOpen(true);
     service.doRegisterClient(values).then(
       (res) => {
         clientForm.resetForm();
@@ -39,6 +46,7 @@ const Register = () => {
 
   function onTrainerFormSubmit(values) {
     // setMsg("");
+    setOpen(true)
     service.doRegisterTrainer(values).then(
       (res) => {
         trainerForm.resetForm();
@@ -57,6 +65,7 @@ const Register = () => {
             className={`${isClient && "active"} slide`}
             onClick={() => {
               setIsClient(true);
+              setMsg("")
               clientForm.handleReset();
             }}
           >
@@ -66,6 +75,7 @@ const Register = () => {
           <label
             className={`${!isClient && "active"} slide`}
             onClick={() => {
+              setMsg("")
               setIsClient(false);
               trainerForm.handleReset();
             }}
@@ -84,6 +94,7 @@ const Register = () => {
             {isClient ? (
               <>
                 <form onSubmit={clientForm.handleSubmit}>
+                <TransitionAlerts open={open} handleClick={handleClick} text="Registration Sucessful, Check your mail to activate your account!"/>
                   <div className="name-field">
                     <div className="field">
                       <input

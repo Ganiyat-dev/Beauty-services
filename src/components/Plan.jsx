@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Card from "../UI/Card";
@@ -9,11 +8,14 @@ import PlanHead from "./PlanHead";
 const Plan = () => {
   const [plans, setPlans] = useState([]);
 
+  // const [servicePlans, setServicePlans] = useState([]);
+
   useEffect(() => {
     async function getPlans() {
       try {
         const result = await axios.get(`http://localhost:9090/api/v1/plans`);
         setPlans(result.data);
+        // setServicePlans(result.data.servicePlans);
       } catch (error) {
         console.log(error);
       }
@@ -26,7 +28,7 @@ const Plan = () => {
       <div className="container programs__container">
         <PlanHead icon={<TbBusinessplan />} title="Plans" />
         <div className="programs__wrapper">
-          {plans.map(
+          {plans?.map(
             ({
               id,
               planName,
@@ -34,6 +36,7 @@ const Plan = () => {
               planPrice,
               planSession,
               servicePlans,
+
               path,
             }) => {
               return (
@@ -41,9 +44,17 @@ const Plan = () => {
                   {/* <span>{name}</span> */}
                   <h4>{planName}</h4>
                   <small>{planDescription}</small>
-                  <small>{planPrice}</small>
-                  <small>{planSession}</small>
-                  <small>{servicePlans}</small>
+                  <small>&#8358; {planPrice}</small>
+                  <small> No of Session: {planSession}</small>
+                  <small>
+                    {servicePlans.map((item, index) => (
+                      <>
+                        <p key={index}>
+                          <span key={index}> {item.serviceName}</span>
+                        </p>
+                      </>
+                    ))}
+                  </small>
                   <Link to="/booking" className="btn sm">
                     Book Now
                   </Link>

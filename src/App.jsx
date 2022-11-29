@@ -11,6 +11,7 @@ import Home from "./pages/home/Home";
 import NotFound from "./pages/notFound/NotFound";
 import Services from "./pages/services/Services";
 import Plans from "./pages/plans/Plans";
+import "./pages/booking/booking.scss"
 
 const App = () => {
   return (
