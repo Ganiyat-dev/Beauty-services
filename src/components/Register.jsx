@@ -87,7 +87,7 @@ const Register = () => {
         <div className="form-container">
           {msg ? (
             <>
-              <p className="message error">Email is already in use</p>
+              <p className="message error">Email Already Exist</p>
             </>
           ) : null}
           <div className="form-inner">
@@ -288,6 +288,7 @@ const Register = () => {
             {!isClient ? (
               <>
                 <form onSubmit={trainerForm.handleSubmit}>
+                <TransitionAlerts open={open} handleClick={handleClick} text="Registration Sucessful, Check your mail to activate your account!"/>
                   <div className="name-field">
                     <div className="field">
                       <input

@@ -1,6 +1,7 @@
 import * as Yup from "yup";
 
 const clientBody = {
+  roles: "CLIENT",
   firstName: "",
   lastName: "",
   email: "",
@@ -40,6 +41,7 @@ const clientValidate = Yup.object().shape({
 });
 
 const trainerBody = {
+  roles: "MAKEUPARTIST",
   firstName: "",
   lastName: "",
   email: "",

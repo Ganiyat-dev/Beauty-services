@@ -12,6 +12,8 @@ import NotFound from "./pages/notFound/NotFound";
 import Services from "./pages/services/Services";
 import Plans from "./pages/plans/Plans";
 import "./pages/booking/booking.scss"
+import Dashboard from "./pages/dashboard/Dashboard";
+
 
 const App = () => {
   return (
@@ -20,7 +22,7 @@ const App = () => {
       <Routes>
         <Route index element={<Home />} />
         <Route path="about" element={<About />} />
-        <Route path="booking" element={<Booking />} />
+        <Route path="booking/:id" element={<Booking />} />
         <Route path="contact" element={<Contact />} />
         <Route path="gallery" element={<Gallery />} />
         <Route path='plans' element={<Plans/>}/>
@@ -28,6 +30,7 @@ const App = () => {
         <Route path="register" element={<Register />} />
         <Route path="sign-in" element={<Login />} />
         <Route path="*" element={<NotFound />} />
+        <Route path="dashboard" element={<Dashboard />}/>
       </Routes>
     </BrowserRouter>
   );

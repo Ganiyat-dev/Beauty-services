@@ -9,7 +9,7 @@ const bookingBody = {
   city: "",
   state: "",
   gender: "",
-  bookingDate: "",
+  startDate: "",
 };
 
 const bookingValidate = Yup.object().shape({
@@ -30,6 +30,6 @@ const bookingValidate = Yup.object().shape({
   city: Yup.string().required("City is required"),
   state: Yup.string().required("State is required"),
   gender: Yup.string().required("Gender is required"),
-  bookingDate: Yup.date().required("Booking date is required"),
+  startDate: Yup.date().required("Booking date is required"),
 });
 export { bookingBody, bookingValidate };

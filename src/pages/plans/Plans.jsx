@@ -54,7 +54,7 @@ const Plan = () => {
                         </p>
                     ))}
                   </small>
-                  <Link to="/booking" className="btn sm">
+                  <Link to="/register" className="btn sm">
                     Book Now
                   </Link>
                 </Card>

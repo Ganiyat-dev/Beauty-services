@@ -1,17 +1,28 @@
 import { useFormik } from "formik";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
+import { useParams } from "react-router-dom";
 import { bookingBody, bookingValidate } from "../../utils/schema/bookingSchema";
 import "./booking.scss";
+import AlertDialog from "./BookingModal";
 import TransitionAlerts from "./Modal";
 
 const Booking = () => {
-  const [isClient] = useState(true);
+  // const [isClient] = useState(true);
   const [msg] = useState("");
   const [open, setOpen] = useState(false);
-  
-const handleClick =()=>{
-  setOpen(false)
-}
+  const { id } = useParams();
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm();
+
+
+  const handleClick = () => {
+    setOpen(false);
+  };
   const bookingForm = useFormik({
     initialValues: bookingBody,
     validationSchema: bookingValidate,
@@ -20,213 +31,191 @@ const handleClick =()=>{
 
   function onBookingFormSubmit(values) {
     console.log("values of values", values);
-    setOpen(true)
+    setOpen(true);
   }
 
+  const [openmodal, setOpenModal] = useState(false);
+  const handleClose = () => {
+    setOpenModal(false);
+  };
+  const userDataVariable = JSON.parse(sessionStorage.getItem("userData"));
+
+  const url = `http://localhost:9090/api/v1/appointment/${userDataVariable.appUser.id}/${id}`;
+
+  const [apierrors, setApiErrors] = useState("");
+
+  async function onSubmit(data, e) {
+    console.log(data);
+
+    fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      // Adding body or contents to send
+      body: JSON.stringify(data),
+    })
+      .then((response) => response.json())
+      .then((json) => {
+        console.log(json);
+        if (json.responseMessage == "Bad Request" || json.responseMessage == "Internal Server Error" ) {
+          setApiErrors(json.responseMessage);
+        } else {
+          // sessionStorage.setItem("userData", JSON.stringify(json));
+          // navigate(`/dashboard`);
+          setOpenModal(true);
+        }
+      });
+  }
+
+  // var date = new Date();
+
   return (
-    <div className="Booking_Main_container">
-      <div className="wrapper">
-        <h2>Booking Details</h2>
-        <div className="form-container">
-          {msg ? (
+    <>
+      <AlertDialog handleClose={handleClose} openmodal={openmodal} />
+      <div className="Booking_Main_container">
+        <div className="wrapper">
+          <h2>Booking Details</h2>
+          <div className="form-container">
+            {/* {msg ? (
             <>
               <p className="message error">Invalid Email or Password</p>
             </>
-          ) : null}
-          <div className="form-inner">
-            {isClient ? (
-              <>
-                <form onSubmit={bookingForm.handleSubmit}>
-                <TransitionAlerts open={open} handleClick={handleClick} text="Your Booking is Successful!"/>
-                  <div className="name-field">
+          ) : null} */}
+            <div className="form-inner">
+              {Object.entries(userDataVariable).length > 0 ? (
+                <>
+                  <form onSubmit={handleSubmit(onSubmit)}>
+                    <TransitionAlerts
+                      open={open}
+                      handleClick={handleClick}
+                      text="Your Booking is Successful!"
+                    />
+                    <div className="name-field">
+                      <div className="field">
+                        <input
+                          type="text"
+                          value={userDataVariable.appUser.firstName}
+                          {...register("firstName")}
+                        />
+                      </div>
+
+                      <div className="field">
+                        <input
+                          type="text"
+                          value={userDataVariable.appUser.lastName}
+                          {...register("lastName")}
+                        />
+                      </div>
+                    </div>
+
+                    <div className="name-field">
+                      <div className="field">
+                        <input
+                          type="text"
+                          value={userDataVariable.appUser.phoneNumber}
+                          {...register("phoneNumber")}
+                          // placeholder="Phone Number"
+                          // name="phoneNumber"
+                          // onChange={bookingForm.handleChange}
+                        />
+                      </div>
+
+                      <div className="field">
+                        <select
+                          className="form-select form-select-lg"
+                          name="gender"
+                          // onChange={bookingForm.handleChange}
+                          value={userDataVariable.appUser.gender}
+                          {...register("gender")}
+                        >
+                          <option defaultValue="">Select gender</option>
+                          <option value="female">Female</option>
+                          <option value="male">Male</option>
+                        </select>
+                      </div>
+                    </div>
+
                     <div className="field">
                       <input
                         type="text"
-                        placeholder="First Name"
-                        name="firstName"
-                        onChange={bookingForm.handleChange}
-                        value={bookingForm.values.firstName}
+                        placeholder="House number and street"
+                        
+                        // onChange={bookingForm.handleChange}
+                        {...register("streetAddress")}
+                        value={userDataVariable.appUser.streetAddress}
                       />
-
-                      <p className="invalid-data">
-                        {bookingForm.errors.firstName &&
-                        bookingForm.touched.firstName
-                          ? bookingForm.errors.firstName
-                          : null}
-                      </p>
                     </div>
 
+                    <div className="name-field">
+                      <div className="field">
+                        <input
+                          type="text"
+                          placeholder="City"
+                        
+                          {...register("city")}
+                          // onChange={bookingForm.handleChange}
+                          value={userDataVariable.appUser.city}
+                        />
+                      </div>
+
+                      <div className="field">
+                        <select
+                          className="form-select form-select-lg"
+                      
+                          placeholder="State"
+                          {...register("state")}
+                          // onChange={bookingForm.handleChange}
+                          value={userDataVariable.appUser.state}
+                        >
+                          <option defaultValue="">Select State</option>
+                          <option value="lagos">Lagos</option>
+                          <option value="abuja">Abuja</option>
+                          <option value="oyo">Oyo</option>
+                          <option value="enugu">Enugu</option>
+                        </select>
+                      </div>
+                    </div>
                     <div className="field">
+                      <label htmlFor="appt">
+                        Choose Date and Time for your Appointment
+                      </label>
                       <input
-                        type="text"
-                        placeholder="Last Name"
-                        name="lastName"
-                        onChange={bookingForm.handleChange}
-                        value={bookingForm.values.lastName}
+                        type="datetime-local"
+                        placeholder="Choose Date"
+                        // name="bookingDate"
+                        id="meeting-time"
+                        //  value="2022-12-06T00:00"
+                        min="2022-12-06T00:00"
+                        max="2040-06-14T00:00"
+                        // onChange={bookingForm.handleChange}
+                        {...register("startDate")}
+                        // value={bookingForm.values.bookingDate}
+                        required
                       />
 
                       <p className="invalid-data">
-                        {bookingForm.errors.lastName &&
-                        bookingForm.touched.lastName
-                          ? bookingForm.errors.lastName
-                          : null}
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="name-field">
-                    <div className="field">
-                      <input
-                        type="text"
-                        placeholder="Phone Number"
-                        name="phoneNumber"
-                        onChange={bookingForm.handleChange}
-                        value={bookingForm.values.phoneNumber}
-                      />
-
-                      <p className="invalid-data">
-                        {bookingForm.errors.phoneNumber &&
-                        bookingForm.touched.phoneNumber
-                          ? bookingForm.errors.phoneNumber
+                        {bookingForm.errors.startDate &&
+                        bookingForm.touched.startDate
+                          ? bookingForm.errors.startDate
                           : null}
                       </p>
                     </div>
 
-                    <div className="field">
-                      <select
-                        className="form-select form-select-lg"
-                        name="gender"
-                        onChange={bookingForm.handleChange}
-                        value={bookingForm.values.gender}
-                      >
-                        <option defaultValue="">Select gender</option>
-                        <option value="female">Female</option>
-                        <option value="male">Male</option>
-                      </select>
-
-                      <p className="invalid-data">
-                        {bookingForm.errors.gender && bookingForm.touched.gender
-                          ? bookingForm.errors.gender
-                          : null}
-                      </p>
+                    <div className="form-btn">
+                      <button id="btn-submit" type="submit">
+                        {" "}
+                        Confirm Booking
+                      </button>
                     </div>
-                  </div>
-
-                  <div className="field">
-                    <input
-                      type="text"
-                      placeholder="House number and street"
-                      name="streetAddress"
-                      onChange={bookingForm.handleChange}
-                      value={bookingForm.values.streetAddress}
-                    />
-
-                    <p className="invalid-data">
-                      {bookingForm.errors.streetAddress &&
-                      bookingForm.touched.streetAddress
-                        ? bookingForm.errors.streetAddress
-                        : null}
-                    </p>
-                  </div>
-
-                  <div className="name-field">
-                    <div className="field">
-                      <input
-                        type="text"
-                        placeholder="City"
-                        name="city"
-                        onChange={bookingForm.handleChange}
-                        value={bookingForm.values.city}
-                      />
-
-                      <p className="invalid-data">
-                        {bookingForm.errors.city && bookingForm.touched.city
-                          ? bookingForm.errors.city
-                          : null}
-                      </p>
-                    </div>
-
-                    <div className="field">
-                      <select
-                        className="form-select form-select-lg"
-                        name="state"
-                        onChange={bookingForm.handleChange}
-                        value={bookingForm.values.state}
-                      >
-                        <option defaultValue="">Select State</option>
-                        <option value="lagos">Lagos</option>
-                        <option value="abuja">Abuja</option>
-                        <option value="oyo">Oyo</option>
-                        <option value="enugu">Enugu</option>
-                      </select>
-
-                      <p className="invalid-data">
-                        {bookingForm.errors.state && bookingForm.touched.state
-                          ? bookingForm.errors.state
-                          : null}
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="field">
-                    <input
-                      type="email"
-                      placeholder="Email Address"
-                      name="email"
-                      onChange={bookingForm.handleChange}
-                      value={bookingForm.values.email}
-                    />
-
-                    <p className="invalid-data">
-                      {bookingForm.errors.email && bookingForm.touched.email
-                        ? bookingForm.errors.email
-                        : null}
-                    </p>
-                  </div>
-                  <div className="field">
-                    <label htmlFor="appt">
-                      Choose Date and Time for your Appointment
-                    </label>
-                    <input
-                      type="datetime-local"
-                      placeholder="Choose Date"
-                      min={"2022-11-28T00:00"}
-                      name="bookingDate"
-                      onChange={bookingForm.handleChange}
-                      value={bookingForm.values.bookingDate}
-                    />
-
-                    <p className="invalid-data">
-                      {bookingForm.errors.bookingDate &&
-                      bookingForm.touched.bookingDate
-                        ? bookingForm.errors.bookingDate
-                        : null}
-                    </p>
-                  </div>
-
-                  <div className="form-btn">
-                    <input
-                      // onClick={() => setOpen(true)}
-                      type="submit"
-                      value="Confrim Booking"
-                    />
-                  </div>
-{/* 
-                  <button type="submit"> Confirm Booking</button> */}
-                </form>
-                {/* <div className={`${!open && "dis-none"}  modal`}>
-                  <h1 className="book">Your booking is Successful</h1>
-                  <button onClick={() => setOpen(true)} className="btn-ok">
-                    {" "}
-                    OK{" "}
-                  </button>
-                </div> */}
-              </>
-            ) : null}
+                  </form>
+                </>
+              ) : null}
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

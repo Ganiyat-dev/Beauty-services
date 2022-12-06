@@ -5,8 +5,18 @@ import { links } from "../data";
 import { GoThreeBars } from "react-icons/go";
 import { MdOutlineClose } from "react-icons/md";
 import "./navbar.css";
+import Home from "../pages/home/Home";
+import Gallery from "../pages/gallery/Gallery";
+import Plan from "../pages/plans/Plans";
+import Services from "../pages/services/Services";
+import Contact from "../pages/contact/Contact";
+import Register from "./Register";
 
 const Navbar = () => {
+  const userDataVariable = JSON.parse(sessionStorage.getItem("userData"));
+  const handleLogout = () => {
+    sessionStorage.clear();
+  }
   const [isNavShowing, setIsNavShowing] = useState(false);
   return (
     <nav>
@@ -17,7 +27,7 @@ const Navbar = () => {
         <ul
           className={`nav__links ${isNavShowing ? "show__Nav" : "hide__Nav"}`}
         >
-          {links.map(({ name, path }, index) => {
+          {/* {links.map(({ name, path }, index) => {
             return (
               <li key={index}>
                 <NavLink
@@ -29,7 +39,33 @@ const Navbar = () => {
                 </NavLink>
               </li>
             );
-          })}
+          })} */}
+          <Link to="/" >
+            Home
+          </Link>
+          <Link to="/gallery" >
+            Gallery
+          </Link>
+          <Link to="/plans" >
+            Plan
+          </Link>
+          <Link to="/services" >
+            Services
+          </Link>
+          <Link to="/contact" >
+            Contact
+          </Link>
+        {
+ userDataVariable?.appUser.enabled ? <Link to="/" onClick={handleLogout} >
+ 
+ Logout
+</Link>  :<Link to="/register" >
+ Register
+</Link>
+        }
+         
+        
+        
         </ul>
         <button
           className="nav__toggle-btn"

@@ -28,6 +28,7 @@ export const links = [
         name: "Get Started",
         path: '/register'
     }
+    
 ]
 
 
